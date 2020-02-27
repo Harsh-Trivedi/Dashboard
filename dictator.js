@@ -23,7 +23,7 @@ function getFormJsonByID( formID ) {
 //This function is use to populate json data to form
 //pass form and Json Data to it.
 
-function populate(frm, data) {   
+function populateForm(frm, data) {   
     $.each(data, function(key, value) {  
         var ctrl = $('[name='+key+']', frm);  
         switch(ctrl.prop("type")) { 
