@@ -37,4 +37,27 @@ function populateForm(frm, data) {
         }  
     });  
 }
+
+
+//HTML encoding is simply replacing &, ", ', < and > chars with their entity equivalents. Order matters, if you don't replace the & chars first, you'll double encode some of the entities:
+function replaceEscapeXMLEncode(str){
+	return str.replace(/&/g, '&amp;')
+               .replace(/</g, '&lt;')
+               .replace(/>/g, '&gt;')
+               .replace(/"/g, '&quot;')
+			   .replace(/'/g, '&apos;');
+			}
+
+
+
+//Conversely if you want to decode HTML entities, make sure you decode &amp; to & after everything else so that you don't double decode any entities:
+function replaceEscapeXMLDecode(str){
+	return this.replace(/&apos;/g, "'")
+				.replace(/&quot;/g, '"')
+				.replace(/&gt;/g, '>')
+				.replace(/&lt;/g, '<')
+				.replace(/&amp;/g, '&');
+			}
+
+
 	
