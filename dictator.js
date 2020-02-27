@@ -19,4 +19,22 @@ function getFormJsonByID( formID ) {
 	return JSON.stringify( obj );
 }
 
+
+//This function is use to populate json data to form
+//pass form and Json Data to it.
+
+function populate(frm, data) {   
+    $.each(data, function(key, value) {  
+        var ctrl = $('[name='+key+']', frm);  
+        switch(ctrl.prop("type")) { 
+            case "radio": case "checkbox":   
+                ctrl.each(function() {
+                    if($(this).attr('value') == value) $(this).attr("checked",value);
+                });   
+                break;  
+            default:
+                ctrl.val(value); 
+        }  
+    });  
+}
 	
